@@ -9,13 +9,16 @@ import ListagemServicos from "../negocio/listagemServicos";
 
 
 
-
-
-
-
 console.log(`Bem-vindo ao cadastro de clientes do Grupo World Beauty`)
 let empresa = new Empresa()
 let execucao = true
+
+
+let cadastroCliente = new CadastroCliente(empresa.getClientes);
+cadastroCliente.preCadastrados();
+
+let cadastroProduto = new CadastroProduto(empresa.getProdutos);
+cadastroProduto.preCadastrados();
 
 while (execucao) {
     console.log(`Opções:`);
