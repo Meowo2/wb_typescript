@@ -20,6 +20,9 @@ cadastroCliente.preCadastrados();
 let cadastroProduto = new CadastroProduto(empresa.getProdutos);
 cadastroProduto.preCadastrados();
 
+let cadastroServico = new CadastroServico(empresa.getServicos);
+cadastroServico.preCadastrados();
+
 while (execucao) {
     console.log(`Opções:`);
     console.log(`1 - Cadastrar cliente`);

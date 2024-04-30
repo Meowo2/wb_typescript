@@ -8,4 +8,16 @@ export default class Servico {
         this.preco = preco;
         this.codigo = codigo;
     }
+
+    public getNome(): string {
+        return this.nome;
+    }
+
+    public getPreco(): number {
+        return this.preco;
+    }
+
+    public getCodigo(): string {
+        return this.codigo;
+    }
 }

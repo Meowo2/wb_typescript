@@ -8,4 +8,16 @@ export default class Produto {
         this.preco = preco
         this.codigo = codigo
     }
+
+    public get getPreco(): number {
+        return this.preco
+    }
+
+    public get getNome(): string {
+        return this.nome;
+    }
+
+    public get getCodigo(): string {
+        return this.codigo;
+    }
 }

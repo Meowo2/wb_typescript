@@ -23,4 +23,24 @@ export default class CadastroServico extends Cadastro {
 
         console.log(`\nCadastro concluído :)\n`);
     }
+
+    public preCadastrados(): void {
+        let servicosIniciais = [
+            { nome: 'Corte de Cabelo', preco: 39.99, codigo: '123' },
+            { nome: 'Manicure', preco: 19.99, codigo: '456' },
+            { nome: 'Pedicure', preco: 14.99, codigo: '789' },
+            { nome: 'Massagem', preco: 29.99, codigo: '012' },
+            { nome: 'Limpeza de Pele', preco: 9.99, codigo: '345' },
+            { nome: 'Depilação', preco: 12.99, codigo: '678' },
+            { nome: 'Design de Sobrancelhas', preco: 19.99, codigo: '901' },
+            { nome: 'Maquiagem', preco: 9.99, codigo: '234' },
+            { nome: 'Tratamento Facial', preco: 14.99, codigo: '567' },
+            { nome: 'Banho de Lua', preco: 24.99, codigo: '890' }
+        ];
+
+        for (let servicoInicial of servicosIniciais) {
+            let servico = new Servico(servicoInicial.nome, servicoInicial.preco, servicoInicial.codigo);
+            this.servicos.push(servico);
+        }
+    }
 }
