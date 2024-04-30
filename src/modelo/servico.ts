@@ -9,15 +9,15 @@ export default class Servico {
         this.codigo = codigo;
     }
 
-    public getNome(): string {
+    public get getNome(): string {
         return this.nome;
     }
 
-    public getPreco(): number {
+    public get getPreco(): number {
         return this.preco;
     }
 
-    public getCodigo(): string {
+    public get getCodigo(): string {
         return this.codigo;
     }
 }

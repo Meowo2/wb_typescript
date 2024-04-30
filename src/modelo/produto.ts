@@ -2,11 +2,13 @@ export default class Produto {
     public nome!: string
     public preco!: number
     public codigo!: string
+    public quantidade!: number
 
-    constructor(nome: string, preco: number, codigo: string) {
+    constructor(nome: string, preco: number, codigo: string, quantidade: number) {
         this.nome = nome
         this.preco = preco
         this.codigo = codigo
+        this.quantidade = quantidade
     }
 
     public get getPreco(): number {
@@ -19,5 +21,13 @@ export default class Produto {
 
     public get getCodigo(): string {
         return this.codigo;
+    }
+
+    public get getQuantidade(): number {
+        return this.quantidade;
+    }
+
+    public atualizarQuantidade(quantidade: number): void {
+        this.quantidade = quantidade;
     }
 }
