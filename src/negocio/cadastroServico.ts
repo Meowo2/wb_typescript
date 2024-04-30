@@ -24,6 +24,10 @@ export default class CadastroServico extends Cadastro {
         console.log(`\nCadastro concluído :)\n`);
     }
 
+    public get getServicos(): Array<Servico> {
+        return this.servicos;
+    }
+
     public preCadastrados(): void {
         let servicosIniciais = [
             { nome: 'Corte de Cabelo', preco: 39.99, codigo: '123' },

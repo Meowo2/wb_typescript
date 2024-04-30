@@ -26,4 +26,19 @@ export default class Empresa{
     public get getVendas(){
         return this.vendas
     }
+    public atualizarClientes(novosClientes: Array<Cliente>): void {
+        this.clientes = novosClientes;
+    }
+
+    public atualizarProdutos(novosProdutos: Array<Produto>): void {
+        this.produtos = novosProdutos;
+    }
+
+    public atualizarServicos(novosServicos: Array<Servico>): void {
+        this.servicos = novosServicos;
+    }
+
+    public atualizarVendas(novasVendas: Array<Venda>): void {
+        this.vendas = novasVendas;
+    }
 }

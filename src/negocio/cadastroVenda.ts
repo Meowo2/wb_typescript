@@ -28,9 +28,9 @@ export default class CadastroVenda extends Cadastro {
         let servicosComprados: Array<{ codigoServico: Servico, quantidade: number, precoIndividual: number }> = [];
 
         //Cliente
-        let nome = this.entrada.receberTexto(`Por favor, informe o cpf do cliente: `);
+        let nome = this.entrada.receberTexto(`Por favor, informe o cpf do cliente (123.456.789-00): `);
         for (let cliente of this.clientes) {
-            if ((cliente.getCpf).getValor == nome) {
+            if (cliente.getCpf == nome) {
                 comprador = cliente;
                 break;
             }else{
@@ -86,5 +86,9 @@ export default class CadastroVenda extends Cadastro {
         this.vendas.push(venda);
 
         console.log(`\nCadastro da venda concluída :)\n`);
+    }
+
+    public get getVendas(): Array<Venda> {
+        return this.vendas;
     }
 }

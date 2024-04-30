@@ -1,10 +1,9 @@
 import Cliente from "./cliente";
-import CPF from "./cpf";
 import Produto from "./produto";
 import Servico from "./servico";
 
 export default class Venda {
-    cpfCliente: CPF;
+    cpfCliente: string;
     codigosProdutos: Array<{ codigoProduto: Produto, quantidade: number, precoIndividual: number }>;
     codigoServicos: Array<{ codigoServico: Servico, quantidade: number, precoIndividual: number }>;
     total: number;
@@ -44,9 +43,11 @@ export default class Venda {
         this.total = this.valorTotal();
     }
 
-    public getCpfCliente(): CPF {
+    */
+   
+    public getCpfCliente(): string {
         return this.cpfCliente;
-    }*/
+    }
 
     public getCodigosProdutos(): Array<{ codigoProduto: Produto, quantidade: number, precoIndividual: number }> {
         return this.codigosProdutos;

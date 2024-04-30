@@ -25,6 +25,10 @@ export default class CadastroProduto extends Cadastro {
         console.log(`\nCadastro concluído :)\n`);
     }
 
+    public get getProdutos(): Array<Produto> {
+        return this.produtos;
+    }
+
     public preCadastrados(): void {
         let produtosIniciais = [
             { nome: 'Base Líquida', preco: 39.99, codigo: '123', quantidade: 8 },

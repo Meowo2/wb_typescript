@@ -15,6 +15,7 @@ export default class ListagemProdutos extends Listagem {
             console.log(`Nome: ${produto.nome}`);
             console.log(`Preço: ${produto.preco}`);
             console.log(`Código: ${produto.codigo}`);
+            console.log(`Quantidade: ${produto.quantidade}`);
             console.log(`--------------------------------------`);
         });
         console.log(`\n`);
