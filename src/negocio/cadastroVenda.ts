@@ -24,9 +24,10 @@ export default class CadastroVenda extends Cadastro {
         console.log(`\nInício do cadastro da venda`);
 
         let comprador;
-        let itens = [];
-        let servicos = [];
+        let produtosComprados: Array<{ codigoProduto: Produto, quantidade: number, precoIndividual: number }> = [];
+        let servicosComprados: Array<{ codigoServico: Servico, quantidade: number, precoIndividual: number }> = [];
 
+        //Cliente
         let nome = this.entrada.receberTexto(`Por favor, informe o cpf do cliente: `);
         for (let cliente of this.clientes) {
             if ((cliente.getCpf).getValor == nome) {
@@ -38,30 +39,52 @@ export default class CadastroVenda extends Cadastro {
             }
         }
 
-        let Produto = this.entrada.receberTexto(`Por favor, informe o código do produto: `);
-        for (let produto of this.produtos) {
-            if (produto.getCodigo == Produto) {
-                if (produto.getQuantidade == 0) {
-                    console.log(`Produto sem estoque.\n`);
+        //Produtos
+        let continuarAdicionando = 's';
+        do {
+            let Produto = this.entrada.receberTexto(`Por favor, informe o código do produto: `);
+            for (let produto of this.produtos) {
+                if (produto.getCodigo == Produto) {
+                    if (produto.getQuantidade == 0) {
+                        console.log(`Produto sem estoque.\n`);
+                        return;
+                    }
+                    let quantidadeComprada = this.entrada.receberNumero(`Por favor, informe a quantidade que gostaria de comprar do produto (Quantidade disponivel: ${produto.getQuantidade}): `);
+                    if (quantidadeComprada > produto.getQuantidade) {
+                        console.log(`Quantidade maior que a disponível.\n`);
+                        return;
+                    }
+                    produto.atualizarQuantidade(produto.getQuantidade - quantidadeComprada);
+                    produtosComprados.push({ codigoProduto: produto, quantidade: quantidadeComprada, precoIndividual: produto.getPreco });
+                    break;
+                }else{
+                    console.log(`Produto não cadastrado, por favor cadastre o produto antes de realizar a venda.\n`);
                     return;
                 }
-                let quantidadeComprada = this.entrada.receberNumero(`Por favor, informe a quantidade que gostaria de comprar do produto (Quantidade disponivel: ${produto.getQuantidade}): `);
-                if (quantidadeComprada > produto.getQuantidade) {
-                    console.log(`Quantidade maior que a disponível.\n`);
-                    return;
-                }
-                produto.atualizarQuantidade(produto.getQuantidade - quantidadeComprada);
-                break;
-            }else{
-                console.log(`Produto não cadastrado, por favor cadastre o produto antes de realizar a venda.\n`);
-                return;
             }
-        }
+            continuarAdicionando = this.entrada.receberTexto(`Deseja adicionar mais produtos? (s/n): `);
+        } while (continuarAdicionando.toLowerCase() == 's');
+
+        //Serviços
+        continuarAdicionando = 's';
+        do {
+            let Servico = this.entrada.receberTexto(`Por favor, informe o código do serviço: `);
+            for (let servico of this.servicos) {
+                if (servico.getCodigo == Servico) {
+                    servicosComprados.push({ codigoServico: servico, quantidade: 1, precoIndividual: servico.getPreco });
+                    break;
+                } else {
+                    console.log(`Serviço não cadastrado, por favor cadastre o serviço antes de realizar a venda.\n`);
+                    return;
+                }
+            }
+            continuarAdicionando = this.entrada.receberTexto(`Deseja adicionar mais serviços? (s/n): `);
+        } while (continuarAdicionando.toLowerCase() == 's');
 
 
-        let venda = new Venda(comprador, itens, servicos);
+        let venda = new Venda(comprador, produtosComprados, servicosComprados);
         this.vendas.push(venda);
 
-        console.log(`\nCadastro concluído :)\n`);
+        console.log(`\nCadastro da venda concluída :)\n`);
     }
 }
