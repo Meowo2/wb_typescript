@@ -5,12 +5,12 @@ import Servico from "./servico";
 
 export default class Venda {
     cpfCliente: CPF;
-    codigosProdutos: Array<Produto>;
-    codigoServicos: Array<Servico>;
+    codigosProdutos: Array<{ codigoProduto: Produto, quantidade: number, precoIndividual: number }>;
+    codigoServicos: Array<{ codigoServico: Servico, quantidade: number, precoIndividual: number }>;
     total: number;
     dataVenda: Date;
 
-    constructor(cliente: Cliente, codigosProdutos: Array<Produto>, codigosServicos: Array<Servico>) {
+    constructor(cliente: Cliente, codigosProdutos: Array<{ codigoProduto: Produto, quantidade: number, precoIndividual: number }>, codigosServicos: Array<{ codigoServico: Servico, quantidade: number, precoIndividual: number }>) {
         this.cpfCliente = cliente.getCpf;
         this.codigosProdutos = codigosProdutos;
         this.codigoServicos = codigosServicos;
@@ -21,10 +21,10 @@ export default class Venda {
     private valorTotal(): number {
         let valorTotal = 0;
         for (let produto of this.codigosProdutos) {
-             valorTotal += produto.getPreco;
+             valorTotal += produto['precoIndividual'] * produto['quantidade'];
         }
         for (let servico of this.codigoServicos) {
-            valorTotal += servico.getPreco;
+            valorTotal += servico['precoIndividual'] * servico['quantidade'];
         }
         return valorTotal;
     }
@@ -33,6 +33,7 @@ export default class Venda {
         this.total = this.valorTotal();
     }
 
+    /*
     public adicionarCodigoProduto(produto: Produto): void {
         this.codigosProdutos.push(produto);
         this.total = this.valorTotal();
@@ -45,13 +46,13 @@ export default class Venda {
 
     public getCpfCliente(): CPF {
         return this.cpfCliente;
-    }
+    }*/
 
-    public getCodigosProdutos(): Array<Produto> {
+    public getCodigosProdutos(): Array<{ codigoProduto: Produto, quantidade: number, precoIndividual: number }> {
         return this.codigosProdutos;
     }
 
-    public getCodigosServicos(): Array<Servico> {
+    public getCodigosServicos(): Array<{ codigoServico: Servico, quantidade: number, precoIndividual: number }> {
         return this.codigoServicos;
     }
 
