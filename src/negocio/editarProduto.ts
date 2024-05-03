@@ -28,4 +28,8 @@ export default class EditarProduto extends Editar {
             console.log(`Produto não encontrado :(\n`);
         }
     }
+
+    public get getProdutos(): Array<Produto> {
+        return this.produtos;
+    }
 }

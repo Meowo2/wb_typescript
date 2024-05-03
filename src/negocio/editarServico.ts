@@ -25,4 +25,8 @@ export default class EditarServico extends Editar {
             console.log(`Serviço não encontrado :(\n`);
         }
     }
+
+    public get getServicos(): Array<Servico> {
+        return this.servicos;
+    }
 }

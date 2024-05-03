@@ -19,7 +19,7 @@ export default class EditarCliente extends Editar {
         if (cliente) {
             let nome = this.entrada.receberTexto(`Por favor informe o novo nome do cliente: `);
             let nomeSocial = this.entrada.receberTexto(`Por favor informe o novo nome social do cliente: `);
-            let telefone = this.entrada.receberTexto(`Por favor informe o novo número de telefone do cliente (ddd 123456789): `);
+            let telefone = this.entrada.receberTexto(`Por favor informe o novo número de telefone do cliente para ser adicionado (ddd 123456789): `);
             let ddd = telefone.substring(0, 3);
             let numero = telefone.substring(4);
             let telefoneObj = new Telefone(ddd, numero);
@@ -32,5 +32,9 @@ export default class EditarCliente extends Editar {
         } else {
             console.log(`Cliente não encontrado :(\n`);
         }
+    }
+
+    public get getClientes(): Array<Cliente> {
+        return this.clientes
     }
 }
