@@ -8,6 +8,9 @@ import CadastroServico from "../negocio/cadastroServico";
 import ListagemServicos from "../negocio/listagemServicos";
 import CadastroVenda from "../negocio/cadastroVenda";
 import ListagemVendas from "../negocio/listagemVendas";
+import EditarCliente from "../negocio/editarCliente";
+import EditarProduto from "../negocio/editarProduto";
+import EditarServico from "../negocio/editarServico";
 
 
 
@@ -35,12 +38,18 @@ while (execucao) {
     console.log(`Opções:`);
     console.log(`1 - Cadastrar cliente`);
     console.log(`2 - Listar todos os clientes`);
-    console.log(`3 - Cadastrar produto`);
-    console.log(`4 - Listar todos os produtos`);
-    console.log(`5 - Cadastrar serviço`);
-    console.log(`6 - Listar todos os serviços`);
-    console.log(`7 - Cadastrar venda`);
-    console.log(`8 - Listar todas as vendas`);
+    console.log(`3 - Editar cliente`)
+
+    console.log(`4 - Cadastrar produto`);
+    console.log(`5 - Listar todos os produtos`);
+    console.log(`6 - Editar produto`);
+
+    console.log(`7 - Cadastrar serviço`);
+    console.log(`8 - Listar todos os serviços`);
+    console.log(`9 - Editar serviço`);
+
+    console.log(`10 - Cadastrar venda`);
+    console.log(`11 - Listar todas as vendas`);
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
@@ -57,29 +66,44 @@ while (execucao) {
             listagemClientes.listar()
             break;
         case 3:
+            let editarCliente = new EditarCliente(empresa.getClientes)
+            editarCliente.editar()
+            empresa.atualizarClientes(editarCliente.getClientes)
+            break;
+        case 4:
             //let cadastroProduto = new CadastroProduto(empresa.getProdutos)
             cadastroProduto.cadastrar()
             empresa.atualizarProdutos(cadastroProduto.getProdutos)
             break;
-        case 4:
+        case 5:
             let listagemProdutos = new ListagemProdutos(empresa.getProdutos)
             listagemProdutos.listar()
             break;
-        case 5:
+        case 6:
+            let editarProduto = new EditarProduto(empresa.getProdutos)
+            editarProduto.editar()
+            empresa.atualizarProdutos(editarProduto.getProdutos)
+            break;
+        case 7:
             //let cadastroServico = new CadastroServico(empresa.getServicos)
             cadastroServico.cadastrar()
             empresa.atualizarServicos(cadastroServico.getServicos)
             break;
-        case 6:
+        case 8:
             let listagemServicos = new ListagemServicos(empresa.getServicos)
             listagemServicos.listar()
             break;
-        case 7:
+        case 9:
+            let editarServico = new EditarServico(empresa.getServicos)
+            editarServico.editar()
+            empresa.atualizarServicos(editarServico.getServicos)
+            break;
+        case 10:
             //let cadastroVenda = new CadastroVenda(empresa.getVendas, empresa.getClientes, empresa.getProdutos, empresa.getServicos)
             cadastroVenda.cadastrar()
             empresa.atualizarVendas(cadastroVenda.getVendas)
             break;
-        case 8:
+        case 11:
             let listagemVendas = new ListagemVendas(empresa.getVendas)
             listagemVendas.listar() 
             break;
