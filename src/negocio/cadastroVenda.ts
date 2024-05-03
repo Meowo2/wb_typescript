@@ -23,6 +23,8 @@ export default class CadastroVenda extends Cadastro {
     public cadastrar(): void {
         console.log(`\nInício do cadastro da venda`);
 
+        let cancelar = 0
+
         let comprador;
         let produtosComprados: Array<{ codigoProduto: Produto, quantidade: number, precoIndividual: number }> = [];
         let servicosComprados: Array<{ codigoServico: Servico, quantidade: number, precoIndividual: number }> = [];
@@ -42,7 +44,11 @@ export default class CadastroVenda extends Cadastro {
         //Produtos
         let continuarAdicionando = 's';
         do {
-            let Produto = this.entrada.receberTexto(`Por favor, informe o código do produto: `);
+            let Produto = this.entrada.receberTexto(`Por favor, informe o código do produto (000 para cancelar): `);
+            if (Produto == '000'){
+                cancelar =+ 1
+                break;
+            }
             for (let produto of this.produtos) {
                 if (produto.getCodigo == Produto) {
                     if (produto.getQuantidade == 0) {
@@ -68,10 +74,15 @@ export default class CadastroVenda extends Cadastro {
         //Serviços
         continuarAdicionando = 's';
         do {
-            let Servico = this.entrada.receberTexto(`Por favor, informe o código do serviço: `);
+            let Servico = this.entrada.receberTexto(`Por favor, informe o código do serviço (000 para cancelar): `);
+            if (Servico == '000'){
+                cancelar =+ 1
+                break;
+            }
             for (let servico of this.servicos) {
                 if (servico.getCodigo == Servico) {
-                    servicosComprados.push({ codigoServico: servico, quantidade: 1, precoIndividual: servico.getPreco });
+                    let quantidadeComprada = this.entrada.receberNumero(`Por favor, informe a quantidade que gostaria de comprar do serviço: `);
+                    servicosComprados.push({ codigoServico: servico, quantidade: quantidadeComprada, precoIndividual: servico.getPreco });
                     break;
                 } else {
                     console.log(`Serviço não cadastrado, por favor cadastre o serviço antes de realizar a venda.\n`);
@@ -81,7 +92,9 @@ export default class CadastroVenda extends Cadastro {
             continuarAdicionando = this.entrada.receberTexto(`Deseja adicionar mais serviços? (s/n): `);
         } while (continuarAdicionando.toLowerCase() == 's');
 
-
+        if (cancelar == 2){
+            return
+        }
         let venda = new Venda(comprador, produtosComprados, servicosComprados);
         this.vendas.push(venda);
 
