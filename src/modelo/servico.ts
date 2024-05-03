@@ -19,9 +19,6 @@ export default class Servico {
         return this.codigo;
     }
 
-    public setDescricao(descricao: string): void {
-        this.nome = descricao;
-    }
     public setPreco(preco: number): void {
         this.preco = preco;
     }
