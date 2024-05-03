@@ -24,6 +24,13 @@ export default class Cliente {
         this.produtosConsumidos = []
         this.servicosConsumidos = []
     }
+
+    public get getNome(): string {
+        return this.nome
+    }
+    public get getNomeSocial(): string {
+        return this.nomeSocial
+    }
     public get getCpf(): string {
         return this.cpf
     }
@@ -37,7 +44,7 @@ export default class Cliente {
         return this.telefones;
     }
     public get getTelefoneString(): string {
-        let telefoneString = "";
+        let telefoneString = "\n";
         for (let telefone of this.telefones) {
             telefoneString += telefone.getDdd + ' ' + telefone.getNumero + "\n";
         }
