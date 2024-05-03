@@ -33,13 +33,18 @@ export default class Cliente {
     public get getDataCadastro(): Date {
         return this.dataCadastro
     }
-    public get getTelefones(): Array<Telefone> {
-        return this.telefones
+
+
+    public setNome(nome: string) {
+        this.nome = nome;
     }
-    public get getProdutosConsumidos(): Array<Produto> {
-        return this.produtosConsumidos
+    public setNomeSocial(nomeSocial: string) {
+        this.nomeSocial = nomeSocial;
     }
-    public get getServicosConsumidos(): Array<Servico> {
-        return this.servicosConsumidos
+    public setTelefone(telefone: Telefone) {
+        this.telefones.push(telefone);
+    }
+    public setGenero(genero: string) {
+        this.genero = genero;
     }
 }

@@ -1,7 +1,7 @@
 export default class Servico {
-    public nome!: string;
-    public preco!: number;
-    public codigo!: string;
+    private nome!: string;
+    private preco!: number;
+    private codigo!: string;
 
     constructor(nome: string, preco: number, codigo: string) {
         this.nome = nome;
@@ -12,12 +12,17 @@ export default class Servico {
     public get getNome(): string {
         return this.nome;
     }
-
     public get getPreco(): number {
         return this.preco;
     }
-
     public get getCodigo(): string {
         return this.codigo;
+    }
+
+    public setDescricao(descricao: string): void {
+        this.nome = descricao;
+    }
+    public setPreco(preco: number): void {
+        this.preco = preco;
     }
 }
