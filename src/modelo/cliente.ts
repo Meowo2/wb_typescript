@@ -33,7 +33,16 @@ export default class Cliente {
     public get getDataCadastro(): Date {
         return this.dataCadastro
     }
-
+    public get getTelefones(): Array<Telefone> {
+        return this.telefones;
+    }
+    public get getTelefoneString(): string {
+        let telefoneString = "";
+        for (let telefone of this.telefones) {
+            telefoneString += telefone.getDdd + ' ' + telefone.getNumero + "\n";
+        }
+        return telefoneString.slice(0, -2);
+    }
 
     public setNome(nome: string) {
         this.nome = nome;
