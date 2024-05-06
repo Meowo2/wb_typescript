@@ -38,6 +38,12 @@ let cadastroVenda = new CadastroVenda(empresa.getVendas, empresa.getClientes, em
 empresa.atualizarVendas(cadastroVenda.getVendas)
 
 while (execucao) {
+    
+    empresa.atualizarVendas(cadastroVenda.getVendas)
+    empresa.atualizarServicos(cadastroServico.getServicos);
+    empresa.atualizarProdutos(cadastroProduto.getProdutos);
+    empresa.atualizarClientes(cadastroCliente.getClientes);
+
     console.log(`Opções:`);
     console.log(`1 - Cadastrar cliente`);
     console.log(`2 - Listar todos os clientes`);
@@ -123,6 +129,9 @@ while (execucao) {
             //let cadastroVenda = new CadastroVenda(empresa.getVendas, empresa.getClientes, empresa.getProdutos, empresa.getServicos)
             cadastroVenda.cadastrar()
             empresa.atualizarVendas(cadastroVenda.getVendas)
+            empresa.atualizarClientes(cadastroVenda.getClientes)
+            empresa.atualizarProdutos(cadastroVenda.getProdutos)
+            empresa.atualizarServicos(cadastroVenda.getServicos)
             break;
         case 14:
             let listagemVendas = new ListagemVendas(empresa.getVendas)
