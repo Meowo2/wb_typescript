@@ -12,7 +12,9 @@ export default class Cliente {
     private dataCadastro: Date
     private telefones: Array<Telefone>
     private produtosConsumidos: Array<Produto>
+    private quantidadeProdutos: Array<number>
     private servicosConsumidos: Array<Servico>
+    private quantidadeServicos: Array<number>
     constructor(nome: string, nomeSocial: string, cpf: string, telefone: Telefone, genero: string) {
         this.nome = nome
         this.nomeSocial = nomeSocial
@@ -23,6 +25,8 @@ export default class Cliente {
         this.telefones = [telefone]
         this.produtosConsumidos = []
         this.servicosConsumidos = []
+        this.quantidadeProdutos = []
+        this.quantidadeServicos = []
     }
 
     public get getNome(): string {
@@ -50,6 +54,18 @@ export default class Cliente {
         }
         return telefoneString.slice(0, -2);
     }
+    public get getProdutosConsumidos(): Array<Produto> {
+        return this.produtosConsumidos;
+    }
+    public get getQuantidadeProdutos(): Array<number> {
+        return this.quantidadeProdutos;
+    }
+    public get getServicosConsumidos(): Array<Servico> {
+        return this.servicosConsumidos;
+    }
+    public get getQuantidadeServicos(): Array<number> {
+        return this.quantidadeServicos;
+    }
 
     public setNome(nome: string) {
         this.nome = nome;
@@ -62,5 +78,17 @@ export default class Cliente {
     }
     public setGenero(genero: string) {
         this.genero = genero;
+    }
+    public addProdutoConsumido(produto: Produto) {
+        this.produtosConsumidos.push(produto);
+    }
+    public addServicoConsumido(servico: Servico) {
+        this.servicosConsumidos.push(servico);
+    }
+    public addQuatidadeProduto(quantidade: number) {
+        this.quantidadeProdutos.push(quantidade);
+    }
+    public addQuantidadeServico(quantidade: number) {
+        this.quantidadeServicos.push(quantidade);
     }
 }
