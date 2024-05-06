@@ -115,6 +115,7 @@ export default class CadastroVenda extends Cadastro {
         comprador.addQuatidadeProduto(quantidadeProduto);
         comprador.addServicoConsumido(servicosComprados);
         comprador.addQuantidadeServico(quantidadeServico);
+        comprador.addValorCompras(venda.getTotal());
         this.vendas.push(venda);
 
         console.log(`\nCadastro da venda concluída :)\n`);

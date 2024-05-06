@@ -15,6 +15,7 @@ export default class Cliente {
     private quantidadeProdutos: Array<number>
     private servicosConsumidos: Array<Servico>
     private quantidadeServicos: Array<number>
+    private valorCompras: Array<number>
     constructor(nome: string, nomeSocial: string, cpf: string, telefone: Telefone, genero: string) {
         this.nome = nome
         this.nomeSocial = nomeSocial
@@ -27,6 +28,7 @@ export default class Cliente {
         this.servicosConsumidos = []
         this.quantidadeProdutos = []
         this.quantidadeServicos = []
+        this.valorCompras = []
     }
 
     public get getNome(): string {
@@ -66,6 +68,9 @@ export default class Cliente {
     public get getQuantidadeServicos(): Array<number> {
         return this.quantidadeServicos;
     }
+    public get getValorCompras(): Array<number> {
+        return this.valorCompras;
+    }
 
     public setNome(nome: string) {
         this.nome = nome;
@@ -90,5 +95,8 @@ export default class Cliente {
     }
     public addQuantidadeServico(quantidade: number) {
         this.quantidadeServicos.push(quantidade);
+    }
+    public addValorCompra(valor: number) {
+        this.valorCompras.push(valor);
     }
 }
