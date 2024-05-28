@@ -38,7 +38,7 @@ export default class ListaServicos extends Component<Props, { mostrarCadastro: b
                 <>
                     <div className="collection">
                         <a className="collection-item">Serviço 1</a>
-                        <a className={estilo}>Serviço 2</a>
+                        <a className="collection-item">Serviço 2</a>
                         <a className="collection-item">Serviço 3</a>
                         <a className="collection-item">Serviço 4</a>
                     </div>
