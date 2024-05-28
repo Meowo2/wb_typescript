@@ -13,32 +13,32 @@ export default class FormularioCadastroCliente extends Component<props> {
                 <form className="col s12">
                     <div className="row">
                         <div className="input-field col s6">
-                            <input id="first_name" type="text" className="validate" />
-                            <label htmlFor="first_name">Nome Completo</label>
+                            <input id="full_name" type="text" className="validate" />
+                            <label htmlFor="full_name">Nome Completo</label>
                         </div>
                         <div className="input-field col s6">
-                            <input id="last_name" type="text" className="validate" />
-                            <label htmlFor="last_name">Nome Social</label>
+                            <input id="social_name" type="text" className="validate" />
+                            <label htmlFor="social_name">Nome Social</label>
                         </div>
                     </div>
                     <div className="row">
                         <div className="input-field col s6">
-                            <input id="telefone" type="text" className="validate" />
-                            <label htmlFor="telefone">CPF</label>
+                            <input id="cpf" type="text" className="validate" />
+                            <label htmlFor="cpf">CPF</label>
                         </div>
                         <div className="input-field col s6">
-                            <input id="email" type="email" className="validate" />
-                            <label htmlFor="email">Telefone</label>
+                            <input id="telefone" type="email" className="validate" />
+                            <label htmlFor="telefone">Telefone</label>
                         </div>
                     </div>
                     <div className="row">
                         <p>
                             <label>
-                                <input name="group1" type="radio" checked />
+                                <input name="masculino" type="radio" checked />
                                 <span>Masculino</span>
                             </label>
                             <label>
-                                <input name="group1" type="radio" />
+                                <input name="feminino" type="radio" />
                                 <span>Feminino</span>
                             </label>
                         </p>
