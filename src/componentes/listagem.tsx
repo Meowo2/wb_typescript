@@ -37,25 +37,25 @@ export default class Listagem extends Component<props> {
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>Teresa</td>
+                                            <td>Cliente 1</td>
                                             <td>17</td>
                                             <td>12</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>Pedro</td>
+                                            <td>Cliente 2</td>
                                             <td>10</td>
                                             <td>10</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>Isabel</td>
+                                            <td>Cliente 3</td>
                                             <td>9</td>
                                             <td>7</td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
-                                            <td>Leopoldina</td>
+                                            <td>Cliente 4</td>
                                             <td>7</td>
                                             <td>3</td>
                                         </tr>
@@ -80,25 +80,25 @@ export default class Listagem extends Component<props> {
                                     <tbody>
                                         <tr>
                                             <td>1</td>
-                                            <td>Teresa</td>
+                                            <td>Cliente 1</td>
                                             <td>R$15.000</td>
                                             <td>R$10.000</td>
                                         </tr>
                                         <tr>
                                             <td>2</td>
-                                            <td>Isabel</td>
+                                            <td>Cliente 2</td>
                                             <td>R$12.000</td>
                                             <td>R$8.000</td>
                                         </tr>
                                         <tr>
                                             <td>3</td>
-                                            <td>Pedro</td>
+                                            <td>Cliente 3</td>
                                             <td>R$900</td>
                                             <td>R$900</td>
                                         </tr>
                                         <tr>
                                             <td>4</td>
-                                            <td>Leopoldina</td>
+                                            <td>Cliente 4</td>
                                             <td>R$500</td>
                                             <td>R$120</td>
                                         </tr>
@@ -123,15 +123,19 @@ export default class Listagem extends Component<props> {
     
                                     <tbody>
                                         <tr>
-                                            <td>Teresa</td>
+                                            <td>Cliente 1</td>
                                             <td>F</td>
                                         </tr>
                                         <tr>
-                                            <td>Isabel</td>
+                                            <td>Cliente 2</td>
                                             <td>F</td>
                                         </tr>
                                         <tr>
-                                            <td>Pedro</td>
+                                            <td>Cliente 3</td>
+                                            <td>M</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Cliente 4</td>
                                             <td>M</td>
                                         </tr>
                                     </tbody>
@@ -152,11 +156,11 @@ export default class Listagem extends Component<props> {
     
                                     <tbody>
                                         <tr>
-                                            <td>Sabonete de Ervas</td>
+                                            <td>Produto 1</td>
                                             <td>F</td>
                                         </tr>
                                         <tr>
-                                            <td>Esfoliante Corporal de Frutas</td>
+                                            <td>Produto 2</td>
                                             <td>M</td>
                                         </tr>
                                     </tbody>
@@ -174,11 +178,11 @@ export default class Listagem extends Component<props> {
     
                                     <tbody>
                                         <tr>
-                                            <td>Tratamento Facial Anti-idade</td>
+                                            <td>Serviço 1</td>
                                             <td>F</td>
                                         </tr>
                                         <tr>
-                                            <td>Massagem Relaxante com Óleos Essenciais</td>
+                                            <td>Serviço 2</td>
                                             <td>M</td>
                                         </tr>
                                     </tbody>
@@ -202,12 +206,12 @@ export default class Listagem extends Component<props> {
     
                                     <tbody>
                                         <tr>
-                                            <td>Sabonete de Ervas</td>
+                                            <td>Produto 1</td>
                                             <td> 250
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Esfoliante Corporal de Frutas</td>
+                                            <td>Produto 2</td>
                                             <td>25</td>
                                         </tr>
                                     </tbody>
@@ -228,11 +232,11 @@ export default class Listagem extends Component<props> {
     
                                     <tbody>
                                         <tr>
-                                            <td>Massagem Relaxante com Óleos Essenciais</td>
+                                            <td>Serviço 3</td>
                                             <td>700</td>
                                         </tr>
                                         <tr>
-                                            <td>Tratamento Facial Anti-idade</td>
+                                            <td>Serviço 4</td>
                                             <td>170</td>
                                         </tr>
                                     </tbody>
@@ -259,19 +263,19 @@ export default class Listagem extends Component<props> {
                                         <tbody>
                                             <tr>
                                                 <td>1</td>
-                                                <td>Leopoldina</td>
+                                                <td>Cliente 4</td>
                                                 <td>7</td>
                                                 <td>3</td>
                                             </tr>
                                             <tr>
                                                 <td>2</td>
-                                                <td>Isabel</td>
+                                                <td>Cliente 2</td>
                                                 <td>9</td>
                                                 <td>7</td>
                                             </tr>
                                             <tr>
                                                 <td>3</td>
-                                                <td>Pedro</td>
+                                                <td>Cliente 1</td>
                                                 <td>10</td>
                                                 <td>10</td>
                                             </tr>
