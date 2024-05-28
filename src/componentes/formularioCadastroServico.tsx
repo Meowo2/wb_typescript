@@ -1,12 +1,12 @@
 import { Component } from "react";
 
 type Props = {
-    theme: string;
+    tema: string;
 };
 
 export default class FormularioCadastroServico extends Component<Props> {
     render() {
-        const buttonStyle = `btn waves-effect waves-light ${this.props.theme}`;
+        const buttonStyle = `btn waves-effect waves-light ${this.props.tema}`;
         return (
             <div className="row">
                 <form className="col s12">
