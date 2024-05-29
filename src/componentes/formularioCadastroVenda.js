@@ -1,6 +1,6 @@
 import React from "react";
 
-function FormularioCadastroCliente(props) {
+function FormularioCadastroVenda(props) {
     let estiloBotao = `btn waves-effect waves-light ${props.tema}`
     return (
         <div className="row">
@@ -8,34 +8,18 @@ function FormularioCadastroCliente(props) {
                 <div className="row">
                     <div className="input-field col s6">
                         <input id="full_name" type="text" className="validate" />
-                        <label htmlFor="full_name">Nome Completo</label>
+                        <label htmlFor="full_name">CPF do Cliente</label>
                     </div>
                     <div className="input-field col s6">
                         <input id="social_name" type="text" className="validate" />
-                        <label htmlFor="social_name">Nome Social</label>
+                        <label htmlFor="social_name">Produtos</label>
                     </div>
                 </div>
                 <div className="row">
-                    <div className="input-field col s6">
+                    <div className="input-field col s12">
                         <input id="cpf" type="text" className="validate" />
-                        <label htmlFor="cpf">CPF</label>
+                        <label htmlFor="cpf">Serviços</label>
                     </div>
-                    <div className="input-field col s6">
-                        <input id="telefone" type="email" className="validate" />
-                        <label htmlFor="telefone">Telefone</label>
-                    </div>
-                </div>
-                <div className="row">
-                    <p>
-                        <label>
-                            <input name="masculino" type="radio" checked />
-                            <span>Masculino</span>
-                        </label>
-                        <label>
-                            <input name="feminino" type="radio" />
-                            <span>Feminino</span>
-                        </label>
-                    </p>
                 </div>
                 <div className="row">
                     <div className="col s12">
@@ -49,4 +33,4 @@ function FormularioCadastroCliente(props) {
     )
 }
 
-export default FormularioCadastroCliente;
+export default FormularioCadastroVenda;

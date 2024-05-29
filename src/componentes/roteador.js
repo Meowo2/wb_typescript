@@ -1,36 +1,66 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import BarraNavegacao from "./barraNavegacao";
 import FormularioCadastroCliente from "./formularioCadastroCliente";
-import ListaClientes from "./listaClientes";
+import ListaCliente from "./listaCliente";
+import ListaProdutos from "./listaProdutos";
+import ListaServicos from "./listaServicos";
+import Listagem from "./listagem";
+import FormularioCadastroVenda from "./formularioCadastroVenda";
 
-export default function Roteador() {
-    const [tela, setTela] = useState('Clientes')
+function Roteador() {
+    const [tela, setTela] = useState('Clientes');
 
-    const seletorView = (valor, e) => {
-        e.preventDefault()
-        setTela(valor)
-    }
+    const selecionarView = (novaTela, evento) => {
+        evento.preventDefault();
+        console.log(novaTela);
+        setTela(novaTela);
+    };
 
-    const construirView = () => {
-
-        if (tela === 'Clientes') {
+    let barraNavegacao = <BarraNavegacao seletorView={selecionarView} tema="purple lighten-4" botoes={['Clientes', 'Produtos', 'Serviços', 'Cadastrar Venda', 'Listagem']} />;
+    
+    switch (tela) {
+        case 'Clientes':
             return (
                 <>
-                    <BarraNavegacao seletorView={seletorView} tema="purple lighten-4" botoes={['Clientes', 'Cadastros']} />
-                    <ListaClientes tema="purple lighten-4" />
+                    {barraNavegacao}
+                    <ListaCliente tema="purple lighten-4" />
                 </>
-            )
-        } else {
+            );
+        case 'Produtos':
             return (
                 <>
-                    <BarraNavegacao seletorView={seletorView} tema="purple lighten-4" botoes={['Clientes', 'Cadastros']} />
-                    <FormularioCadastroCliente tema="purple lighten-4" />
+                    {barraNavegacao}
+                    <ListaProdutos tema="purple lighten-4" />
                 </>
-            )
-        }
+            );
+        case 'Serviços':
+            return (
+                <>
+                    {barraNavegacao}
+                    <ListaServicos tema="purple lighten-4" />
+                </>
+            );
+        case 'Cadastrar Venda':
+            return (
+                <>
+                    {barraNavegacao}
+                    <FormularioCadastroVenda tema="purple lighten-4" />
+                </>
+            );
+        case 'Listagem':
+            return (
+                <>
+                    {barraNavegacao}
+                    <Listagem tema="purple lighten-4" />
+                </>
+            );
+        default:
+            return (
+                <>
+                    {barraNavegacao}
+                </>
+            );
     }
-
-    return (
-        construirView()
-    )
 }
+
+export default Roteador;
