@@ -4,6 +4,8 @@ import 'materialize-css/dist/css/materialize.min.css'
 import FormularioCadastroCliente from "./formularioCadastroCliente";
 import BuscarClientes from "../back/buscarCliente";
 import { URI } from "../back/uri";
+import RemoverCliente from "../back/removerCliente";
+import RemoveIdCliente from "../back/removeIdCliente";
 
 interface Cliente {
     id: string;
@@ -51,15 +53,16 @@ export default class ListaCliente extends Component<props, State> {
         });
     }
 
-    public async removeCliente(cliente: any, e: any): Promise<void> {
-        if (e && e.stopPropagation) e.stopPropagation();
-        await fetch(URI.DELETAR_CLIENTE, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(cliente)
-        });
+    public excluirRemoto(idCliente: string) {
+        let removedor = new RemoverCliente();
+        removedor.remover({ id: idCliente });
+    }
+
+    public excluirLocal(id: string, e: React.MouseEvent<HTMLAnchorElement>) {
+        e.preventDefault();
+        let removedorLocal = new RemoveIdCliente();
+        let clientes = removedorLocal.remover(this.state.clientes, id);
+        this.excluirRemoto(id);
         this.buscarClientes();
     }
 
@@ -106,7 +109,7 @@ export default class ListaCliente extends Component<props, State> {
                                 </li>
                             </a>
                             <div className="secondary-content">
-                                <a href="/" className="button-edition" onClick={(e)=> { this.removeCliente(cliente, e) }}>
+                                <a href="/" className="button-edition" onClick={(e)=> { this.excluirLocal(cliente.id, e) }}>
                                     <i className="material-icons">block</i>
                                 </a>
                             </div>
