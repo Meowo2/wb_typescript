@@ -3,6 +3,7 @@ import { Component } from "react";
 import 'materialize-css/dist/css/materialize.min.css'
 import FormularioCadastroCliente from "./formularioCadastroCliente";
 import BuscarClientes from "../back/buscarCliente";
+import { URI } from "../back/uri";
 
 interface Cliente {
     id: string;
@@ -50,6 +51,18 @@ export default class ListaCliente extends Component<props, State> {
         });
     }
 
+    public async removeCliente(cliente: any, e: any): Promise<void> {
+        if (e && e.stopPropagation) e.stopPropagation();
+        await fetch(URI.DELETAR_CLIENTE, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(cliente)
+        });
+        this.buscarClientes();
+    }
+
     handleAddClick = () => {
         this.setState({ mostrarCadastro: true });
     }
@@ -93,7 +106,7 @@ export default class ListaCliente extends Component<props, State> {
                                 </li>
                             </a>
                             <div className="secondary-content">
-                                <a href="/" className="button-edition">
+                                <a href="/" className="button-edition" onClick={(e)=> { this.removeCliente(cliente, e) }}>
                                     <i className="material-icons">block</i>
                                 </a>
                             </div>

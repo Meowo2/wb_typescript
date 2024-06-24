@@ -9,14 +9,22 @@ export default class FormularioCadastroCliente extends Component<props> {
 
     private nome!: string;
     private sobreNome!: string;
-    private endereco!: {
-        estado?: string;
-        cidade?: string;
-        bairro?: string;
-        rua?: string;
-        numero?: string;
-        codigoPostal?: string;
-        informacoesAdicionais?: string;
+    private endereco: {
+        estado: string;
+        cidade: string;
+        bairro: string;
+        rua: string;
+        numero: string;
+        codigoPostal: string;
+        informacoesAdicionais: string;
+    } = {
+        estado: '',
+        cidade: '',
+        bairro: '',
+        rua: '',
+        numero: '',
+        codigoPostal: '',
+        informacoesAdicionais: ''
     };
 
     constructor(props: props | Readonly<props>) {
@@ -77,18 +85,18 @@ export default class FormularioCadastroCliente extends Component<props> {
     public submeterFormulario(evento: any) {
         evento.preventDefault();
         let cliente = {
-                nome: this.nome,
-                sobreNome: this.sobreNome,
-                endereco: {
-                    cidade: this.endereco.cidade,
-                    estado: this.endereco.estado,
-                    bairro: this.endereco.bairro,
-                    rua: this.endereco.rua,
-                    numero: this.endereco.numero,
-                    codigoPostal: this.endereco.codigoPostal,
-                    informacoesAdicionais: this.endereco.informacoesAdicionais
-                }
+            nome: this.nome,
+            sobreNome: this.sobreNome,
+            endereco: {
+                cidade: this.endereco.cidade,
+                estado: this.endereco.estado,
+                bairro: this.endereco.bairro,
+                rua: this.endereco.rua,
+                numero: this.endereco.numero,
+                codigoPostal: this.endereco.codigoPostal,
+                informacoesAdicionais: this.endereco.informacoesAdicionais
             }
+        };
         this.registerCliente(cliente);
         evento.target.reset();
     }
