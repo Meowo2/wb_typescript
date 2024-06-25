@@ -14,6 +14,7 @@ import EditarServico from "../negocio/editarServico";
 import ExcluirCliente from "../negocio/excluirCliente";
 import ExcluirProduto from "../negocio/excluirProduto";
 import ExcluirServico from "../negocio/excluirServico";
+import ListagemConsumo from "../negocio/listagemConsumo";
 
 
 
@@ -62,6 +63,7 @@ while (execucao) {
 
     console.log(`13 - Cadastrar venda`);
     console.log(`14 - Listar todas as vendas`);
+    console.log(`15 - Listagens de consumos`);
     console.log(`0 - Sair`);
 
     let entrada = new Entrada()
@@ -136,6 +138,10 @@ while (execucao) {
         case 14:
             let listagemVendas = new ListagemVendas(empresa.getVendas)
             listagemVendas.listar() 
+            break;
+        case 15:
+            let listagem = new ListagemConsumo(empresa.getClientes)
+            listagem.listar()
             break;
         case 0:
             execucao = false
