@@ -6,6 +6,8 @@ import BuscarClientes from "../back/buscarCliente";
 import { URI } from "../back/uri";
 import RemoverCliente from "../back/removerCliente";
 import RemoveIdCliente from "../back/removeIdCliente";
+import FormularioEdicao from "./formularioEdicao";
+import AtualizarCliente from "../back/atualizarCliente";
 
 interface Cliente {
     id: string;
@@ -66,6 +68,28 @@ export default class ListaCliente extends Component<props, State> {
         this.buscarClientes();
     }
 
+    public ativarEdicao(cliente: Cliente, e: React.MouseEvent<HTMLAnchorElement>) {
+        e.preventDefault();
+        this.setState({ clienteEditando: cliente, modoEdicao: true });
+    }
+
+    public atualizarCliente(cliente: Cliente) {
+        let atualizadorCliente = new AtualizarCliente();
+        atualizadorCliente.atualizar(cliente);
+        const clientesAtualizados = this.state.clientes.map(c => {
+            if (c.id === cliente.id) {
+                return cliente;
+            } else {
+                return c;
+            }
+        });
+        this.setState({
+            clientes: clientesAtualizados,
+            modoEdicao: false,
+            clienteEditando: null
+        });
+    }
+
     handleAddClick = () => {
         this.setState({ mostrarCadastro: true });
     }
@@ -88,6 +112,92 @@ export default class ListaCliente extends Component<props, State> {
                     </div>
                 </>
             );
+        } if (this.state.modoEdicao) {
+            const estiloBotao = `btn waves-effect waves-light ${this.props.tema}`
+            if (this.state.clienteEditando){
+                var clientedit = this.state.clienteEditando
+            }
+            return (
+                <>
+                    <div>
+                    
+                    {this.state.modoEdicao && this.state.clienteEditando && this.state.clienteEditando.id === this.state.clienteEditando.id && (
+
+                    <div className="row">
+            <form className="col s12" onSubmit= {() => this.atualizarCliente(clientedit)}>
+
+                <div className="row">
+
+                <div className="input-field col s6">
+                    <input id="nome" type="text" className="validate active" value={this.state.clienteEditando.nome}/>
+                    <label htmlFor="nome">Nome</label>
+                </div>
+
+                <div className="input-field col s6">
+                    <input id="sobreNome" type="text" className="validate"/>
+                    <label htmlFor="sobreNome">Sobrenome</label>
+                </div>
+
+                <div className="input-field col s6">
+                    <input id="cidade" type="text" className="validate"/>
+                    <label htmlFor="cidade">Cidade</label>
+                </div>
+
+                <div className="input-field col s6">
+                    <input id="estado" type="text" className="validate"/>
+                    <label htmlFor="estado">Estado</label>
+                </div>
+
+                <div className="input-field col s6">
+                    <input id="bairro" type="text" className="validate"/>
+                    <label htmlFor="bairro">Bairro</label>
+                </div>
+
+                <div className="input-field col s6">
+                    <input id="rua" type="text" className="validate"/>
+                    <label htmlFor="rua">Rua</label>
+                </div>
+
+                <div className="input-field col s6">
+                    <input id="numero" type="text" className="validate"/>
+                    <label htmlFor="numero">Número Residência</label>
+                </div>
+
+                <div className="input-field col s6">
+                    <input id="codigoPostal" type="text" className="validate"/>
+                    <label htmlFor="codigoPostal">Código Postal</label>
+                </div>
+
+                <div className="input-field col s6">
+                    <input id="informacoesAdicionais" type="text" className="validate"/>
+                    <label htmlFor="informacoesAdicionais">Informações Adicionais</label>
+                </div>
+
+                </div>
+
+                <div className="row">
+
+                <div className="col s12">
+                    <button className={estiloBotao} type="submit" name="action">Submit
+                    <i className="material-icons right">send</i>
+                    </button>
+                </div>
+
+                </div>
+
+            </form>
+            </div>
+            )}
+
+
+
+                    </div>
+                    <div className="right-align">
+                        <a onClick={() => this.setState({ modoEdicao: false })} className="waves-effect waves-light btn">Voltar</a>
+                    </div>
+                </>
+            );
+            
         } else {
             return (
                 <>
@@ -95,6 +205,12 @@ export default class ListaCliente extends Component<props, State> {
                         {clientes.map(cliente => (
                             <>
                             <a className="collection-item">
+                                <a href="/" onClick={(e) => this.ativarEdicao(cliente, e)}>
+                                    <i className="material-icons">edit</i>
+                                </a>
+                                <a href="/" className="button-edition" onClick={(e)=> { this.excluirLocal(cliente.id, e) }}>
+                                    <i className="material-icons">block</i>
+                                </a>
                                 <h6><strong>{cliente.nome}</strong></h6>
                                 <h6>{cliente.sobreNome}</h6>
                                 <li>
@@ -107,12 +223,8 @@ export default class ListaCliente extends Component<props, State> {
                                     <p>Código Postal: {cliente.endereco.codigoPostal}</p>
                                     <p>Informações Adicionais: {cliente.endereco.informacoesAdicionais}</p>
                                 </li>
+
                             </a>
-                            <div className="secondary-content">
-                                <a href="/" className="button-edition" onClick={(e)=> { this.excluirLocal(cliente.id, e) }}>
-                                    <i className="material-icons">block</i>
-                                </a>
-                            </div>
                             </>
                         ))}
                     </div>
